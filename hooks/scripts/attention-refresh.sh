@@ -9,7 +9,7 @@ feature=$(grep -i 'feature:' "$state" 2>/dev/null | head -1 | sed 's/.*: *//' ||
 
 case "$phase" in
   *work*|*executing*|*Work*|*Executing*)
-    tasks=".workflow/features/${feature}/tasks.md"
+    tasks=".workflow/wip/${feature}/tasks.md"
     if [ -n "$feature" ] && [ -f "$tasks" ]; then
       ctx=$(head -20 "$tasks" | tr '\n' '\\' | sed 's/\\/\\n/g' | sed 's/"/\\"/g')
       printf '{"additionalContext":"Active tasks for %s:\\n%s"}' "$feature" "$ctx"

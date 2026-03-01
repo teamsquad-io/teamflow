@@ -1,9 +1,9 @@
-# Plan: [numero] — [titulo]
+# Plan — [titulo]
 
 | Campo | Valor |
 |-------|-------|
-| Feature | [numero] |
-| Spec | `.workflow/specs/[numero]/spec.md` |
+| Feature | [slug] |
+| Spec | `.workflow/wip/[feature-name]/spec.md` |
 | Fecha | YYYY-MM-DD |
 | Estado | draft / ready / approved |
 

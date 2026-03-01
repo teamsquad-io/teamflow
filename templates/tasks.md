@@ -1,9 +1,9 @@
-# Tasks: [numero] — [titulo]
+# Tasks — [titulo]
 
 | Campo | Valor |
 |-------|-------|
-| Feature | [numero] |
-| Plan | `.workflow/specs/[numero]/plan.md` |
+| Feature | [slug] |
+| Plan | `.workflow/wip/[feature-name]/plan.md` |
 | Fecha | YYYY-MM-DD |
 
 <!-- Status: [ ] pending  [~] in-progress  [x] done  [!] blocked -->
@@ -22,7 +22,7 @@
 - **Que hacer:**
   - [paso concreto]
 - **Acceptance Criteria:**
-  - [ ] [criterio vinculado a FR-XXX]
+  - [ ] [criterio vinculado a R-xxx]
 
 ---
 

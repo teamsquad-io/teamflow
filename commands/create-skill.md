@@ -7,7 +7,6 @@ allowed-tools:
   - Glob
   - Skill
   - AskUserQuestion
-disable-model-invocation: true
 ---
 
 Invoke the teamflow:creating-skills skill and follow it exactly as presented.

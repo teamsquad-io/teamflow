@@ -7,7 +7,6 @@ allowed-tools:
   - Skill
   - Grep
   - Glob
-disable-model-invocation: true
 ---
 
 Invoke the teamflow:planning skill and follow it exactly as presented.

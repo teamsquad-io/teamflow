@@ -3,7 +3,6 @@ name: teamflow:spec
 description: "Router: asks whether the user wants a functional (PO) or technical (developer) spec, then delegates to the right skill"
 allowed-tools:
   - Skill
-disable-model-invocation: true
 ---
 
 Before doing anything else, ask the user:

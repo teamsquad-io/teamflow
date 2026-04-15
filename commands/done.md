@@ -7,7 +7,6 @@ allowed-tools:
   - Skill
   - Task
   - Bash
-disable-model-invocation: true
 ---
 
 Invoke the teamflow:producing skill and follow it exactly as presented.

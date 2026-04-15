@@ -5,7 +5,6 @@ allowed-tools:
   - Read
   - Write
   - Skill
-disable-model-invocation: true
 ---
 
 Invoke the teamflow:spec-functional skill and follow it exactly as presented.

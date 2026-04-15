@@ -9,7 +9,6 @@ allowed-tools:
   - Grep
   - Glob
   - Task
-disable-model-invocation: true
 ---
 
 Quick fix flow — bypasses the formal spec process for small, obvious changes.

@@ -10,7 +10,6 @@ allowed-tools:
   - Glob
   - Skill
   - Task
-disable-model-invocation: true
 ---
 
 Invoke the teamflow:executing skill and follow it exactly as presented.

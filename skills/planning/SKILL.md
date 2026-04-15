@@ -22,25 +22,36 @@ Convierte un spec aprobado en un plan tecnico con decisiones, estructura de camb
    - **Solo las guidelines de componentes afectados.** Lee `.workflow/platform/components/<componente>.md` solo para los componentes que el feature toca. NUNCA cargues todas las guidelines a la vez.
    - Si una guideline excede ~20KB, lee solo las primeras 50 lineas (TOC/overview) y carga secciones relevantes bajo demanda.
 
-3. **Generar el plan.** Crea `.workflow/wip/[feature-name]/plan.md` con:
+3. **Investigar codigo real (OBLIGATORIO).** Antes de generar el plan, investiga el codigo existente usando el MCP indexer de codigo (teamsquad-indexer) u otras herramientas de busqueda disponibles. NUNCA generes un plan basado en asunciones sobre el codigo — las asunciones causan retrabajos.
+
+   - **Buscar componentes afectados:** Usa `search_code` para localizar los simbolos principales que el feature toca.
+   - **Leer source de componentes clave:** Usa `get_symbol(include_source=true)` para entender la logica actual de los componentes que se van a modificar.
+   - **Mapear dependencias:** Usa `find_references` para entender quien importa/usa cada componente. Esto revela flujos separados, consumidores ocultos y side effects.
+   - **Descubrir patrones existentes:** Identifica selectores, hooks, contextos, tipos y convenciones que el plan debe reutilizar (no reinventar).
+   - **Documentar hallazgos:** Los descubrimientos tecnicos relevantes (flujos separados, componentes que no hacen lo que parece, datos que vienen de sitios inesperados) se documentan como IT-xxx en el plan.
+
+   Si no hay MCP indexer disponible, usar Grep/Glob/Read para la misma investigacion. Lo importante es investigar, no la herramienta.
+
+4. **Generar el plan.** Crea `.workflow/wip/[feature-name]/plan.md` con:
    - **Componentes afectados** (tags de componente, tipo de cambio)
-   - **Investigacion tecnica** (IT-001... hallazgos relevantes)
+   - **Investigacion tecnica** (IT-001... hallazgos del paso 3)
    - **Decisiones tecnicas** (DT-001... con contexto, opciones evaluadas, decision, rationale)
    - **Estructura de cambios** por componente (archivos, tipo, descripcion)
    - **Riesgos y mitigaciones**
 
-4. **Constitutional gate check.** Si existe `.workflow/constitution.md`, verifica que cada principio y regla se respete. Documenta la verificacion en el plan.
+5. **Constitutional gate check.** Si existe `.workflow/constitution.md`, verifica que cada principio y regla se respete. Documenta la verificacion en el plan.
 
-5. **Validar trazabilidad.** Cada regla de negocio (R-xxx) del spec debe estar cubierto por al menos una entrada en la estructura de cambios. Si falta cobertura, corregir.
+6. **Validar trazabilidad.** Cada regla de negocio (R-xxx) del spec debe estar cubierto por al menos una entrada en la estructura de cambios. Si falta cobertura, corregir.
 
-6. **Actualizar estado.** Mueve `state.yaml` a fase `planning`, estado `draft`.
+7. **Actualizar estado.** Mueve `state.yaml` a fase `planning`, estado `draft`.
 
-7. **Revisar con el usuario.** Presenta el plan y pide aprobacion.
+8. **Revisar con el usuario.** Presenta el plan y pide aprobacion.
 
 ## Template
 Busca template en `.workflow/templates/plan.md`. Si no existe, usa la estructura descrita arriba.
 
 ## Errores Comunes
+- Crear plan sin investigar el codigo real — genera planes basados en asunciones que causan retrabajos (ej: asumir un flujo unico cuando hay dos separados, asumir que un componente ejecuta una accion cuando solo selecciona datos).
 - Crear plan sin leer la constitution — puede violar principios del proyecto.
 - No validar trazabilidad spec->plan — requisitos se pierden silenciosamente.
 - Decisiones tecnicas sin rationale — se olvida el "por que" y se repite el debate.
